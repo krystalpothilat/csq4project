@@ -3,32 +3,26 @@ package bricks.copy;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.geom.AffineTransform;
 
 public class Ball {
 	private int x;
 	private int y;
-	private int bh;
+	private int h;
 	private int w;
 	private int vx;
 	private int vy;
 	private Image img;
 	private AffineTransform tx = AffineTransform.getTranslateInstance(x, y);
 	
-//	public Ball() {
-//		x = 350;
-//		y = 700;
-//		h = 5;
-//		w = 5;
-//		vx = 4;
-//		vy = 4;
-//	}
-//	
 	public Ball(int paramH, int paramW, int paramX, int paramY) {
-		this.bh = paramH;
+		this.h = paramH;
 		this.w = paramW;
 		this.x = paramX;
 		this.y = paramY;
+		vx = 1;
+		vy = -1;
 	}
 	
 	public void paint(Graphics g) {
@@ -37,6 +31,11 @@ public class Ball {
 		
 	}
 	
+	public void move() {
+		w += vy;
+		h += vx;
+	}
+		
 	public int getVx() {
 		return vx;
 	}
@@ -69,12 +68,12 @@ public class Ball {
 		this.y = y;
 	}
 
-	public int getbH() {
-		return bh;
+	public int getH() {
+		return h;
 	}
 
-	public void setbH(int h) {
-		this.bh = h;
+	public void setH(int h) {
+		this.h = h;
 	}
 
 	public int getW() {
